@@ -1,0 +1,1 @@
+# bdd-arquillian-sample
