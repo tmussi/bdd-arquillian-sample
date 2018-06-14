@@ -10,10 +10,21 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<eclipselink.version>2.6.5</eclipselink.version>
 		<junit.version>4.12</junit.version>
 		<cucumber.version>1.2.5</cucumber.version>
+		<arquillian.version>1.4.0.Final</arquillian.version>
+		<arquillian.glassfish.version>1.0.2</arquillian.glassfish.version>
+		<glassfish.embedded.version>3.1.2</glassfish.embedded.version>
 	</properties>
 	<dependencies>
+		<!-- jpa -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>${eclipselink.version}</version>
+        </dependency>
+	
 		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -34,7 +45,38 @@
 			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- cucumber -->
+		<!-- arquillian -->
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- arquillian container adapter -->
+		<dependency>
+			<groupId>org.jboss.arquillian.container</groupId>
+			<artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+			<version>${arquillian.glassfish.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- glassfish dependencies -->
+		<dependency>
+			<groupId>org.glassfish.main.extras</groupId>
+			<artifactId>glassfish-embedded-all</artifactId>
+			<version>${glassfish.embedded.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>${arquillian.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
