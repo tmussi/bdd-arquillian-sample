@@ -16,15 +16,16 @@
 		<arquillian.version>1.4.0.Final</arquillian.version>
 		<arquillian.glassfish.version>1.0.2</arquillian.glassfish.version>
 		<glassfish.embedded.version>3.1.2</glassfish.embedded.version>
+		<cukespace.version>1.6.7</cukespace.version>
 	</properties>
 	<dependencies>
 		<!-- jpa -->
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>eclipselink</artifactId>
-            <version>${eclipselink.version}</version>
-        </dependency>
-	
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>${eclipselink.version}</version>
+		</dependency>
+
 		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -65,8 +66,29 @@
 			<version>${glassfish.embedded.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- cukespace -->
+		<dependency>
+			<groupId>com.github.cukespace</groupId>
+			<artifactId>cukespace-core</artifactId>
+			<version>${cukespace.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>info.cukes</groupId>
+					<artifactId>cucumber-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

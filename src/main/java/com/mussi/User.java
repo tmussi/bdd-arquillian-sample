@@ -6,14 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
+@NamedQueries({
+        @NamedQuery(name = "User.findUserByNameAndEmail", query = "SELECT u FROM User u WHERE u.name = :name AND u.email = :email") })
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(sequenceName = "SEQ_USERS", allocationSize = 1, name = "SEQ_USERS")
     private BigDecimal id;
     private String name;
     private String email;
