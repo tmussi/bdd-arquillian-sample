@@ -42,7 +42,8 @@ public class UserServiceTest {
 
     @When("^create user:$")
     public void createUser(List<User> users) {
-        users.forEach(userService::saveUser);
+        // users.forEach(userService::saveUser);
+        userService.saveAllUsers(users);
     }
 
     @Then("^user should exists:$")
