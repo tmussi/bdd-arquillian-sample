@@ -1,12 +1,16 @@
-package com.mussi;
+package com.mussi.sample.service;
 
 import java.util.List;
 
+import javax.annotation.security.PermitAll;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.mussi.sample.entity.User;
+
 @Stateless
+@PermitAll
 public class UserService {
 
     @PersistenceContext
@@ -21,10 +25,8 @@ public class UserService {
     }
 
     public User findUser(User user) {
-        return (User) em.createNamedQuery("User.findUserByNameAndEmail")
-                .setParameter("name", user.getName())
-                .setParameter("email", user.getEmail())
-                .getSingleResult();
+        return (User) em.createNamedQuery("User.findUserByNameAndEmail").setParameter("name", user.getName())
+                .setParameter("email", user.getEmail()).getSingleResult();
     }
 
 }

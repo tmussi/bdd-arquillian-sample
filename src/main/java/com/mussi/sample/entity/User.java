@@ -1,6 +1,4 @@
-package com.mussi;
-
-import java.math.BigDecimal;
+package com.mussi.sample.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,10 +18,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(sequenceName = "SEQ_USERS", allocationSize = 1, name = "SEQ_USERS")
-    private BigDecimal id;
+    private Long id;
     private String name;
     private String email;
     private String password;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -51,8 +57,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "[" + this.getClass().getSimpleName() + "; name=" + this.name + "; email=" + this.email + "; password="
-                + this.password + "];";
+        return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
     }
 
 }
